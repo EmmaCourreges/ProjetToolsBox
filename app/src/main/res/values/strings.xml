@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AndroidToolBox</string>
+    <string name="welcome">Bienvenue</string>
+
+    <string name="menu_cycle">Cycle de vie</string>
+    <string name="menu_save">Sauvegarde</string>
+    <string name="menu_webservices">Webservices</string>
+
+    <string name="logout">Se déconnecter</string>
+
+    <string name="menu_permissions">Permissions</string>
+
+    <string name="title_activity_login">Connexion</string>
+
+    <string name="action_login">Se connecter</string>
+
+    <string name="remember">Se souvenir de moi</string>
+
+    <string name="prompt_username">Identifiant</string>
+
+    <string name="prompt_password">Mot de passe</string>
+
+    <string name="prompt_failed_login">Mauvais identifiant ou mot de passe</string>
+    <string name="formulaire">Formulaire</string>
+    <string name="button">Button</string>
+
+</resources>
