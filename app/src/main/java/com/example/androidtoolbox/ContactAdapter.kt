@@ -21,6 +21,6 @@ class ContactAdapter(val contacts : List<String>) : RecyclerView.Adapter<Contact
         holder.contactName.text = contacts[position]
     }
     class ContactViewHolder(contactView: View) : RecyclerView.ViewHolder(contactView){
-        val contactName: TextView = contactView.contactName
+        val contactName: TextView = contactView.WebService
     }
 }

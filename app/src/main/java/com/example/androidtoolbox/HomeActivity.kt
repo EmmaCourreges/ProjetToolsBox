@@ -39,6 +39,9 @@ class HomeActivity : AppCompatActivity() {
         cycleImg.setOnClickListener {
             goToCycle()
         }
+        webImg.setOnClickListener {
+            goToWeb()
+        }
     }
 
     /* private fun goToMain(){
@@ -61,6 +64,10 @@ class HomeActivity : AppCompatActivity() {
     }
     private fun goToCycle(){
         val intent = Intent(this, CycleActivity::class.java)
+        startActivity(intent)
+    }
+    private fun goToWeb(){
+        val intent = Intent(this, WebServiceActivity::class.java)
         startActivity(intent)
     }
 

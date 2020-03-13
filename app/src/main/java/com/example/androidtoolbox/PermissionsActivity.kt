@@ -1,26 +1,35 @@
 package com.example.androidtoolbox
 
-import android.annotation.SuppressLint
-import android.app.Activity
+import android.Manifest
+import android.Manifest.permission
 import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Bitmap
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
-import android.widget.ArrayAdapter
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_permissions.*
+import java.security.AccessController.getContext
+
 
 class PermissionsActivity : AppCompatActivity()  {
+
     val contacts = mutableListOf<String>()
 
+
     lateinit var currentPhotoPath: String
+    private val TAG = "Permission"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +48,20 @@ class PermissionsActivity : AppCompatActivity()  {
         contactRecycler.layoutManager = LinearLayoutManager(this)
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            RECORD_REQUEST_CODE -> {
+
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                    Log.i(TAG, "Permission has been denied by user")
+                } else {
+                    Log.i(TAG, "Permission has been granted by user")
+                }
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         data?.data?.let{ //Nous return l'URI + Le .let va me dire si c'est pas nul
@@ -48,6 +71,7 @@ class PermissionsActivity : AppCompatActivity()  {
 
     companion object { // Creer des statics
         private const  val REQUEST_CODE_GALLERY = 22
+        private const  val RECORD_REQUEST_CODE = 101
     }
 
     private fun showPictureDialog() {
@@ -81,6 +105,7 @@ class PermissionsActivity : AppCompatActivity()  {
         }
     }
     private fun getContacts() {
+        setupPermissionsContact()
         val resolver: ContentResolver = contentResolver;
         val cursor = resolver.query(
             ContactsContract.Contacts.CONTENT_URI,
@@ -101,5 +126,16 @@ class PermissionsActivity : AppCompatActivity()  {
         }
         cursor.close()
     }
+    private fun setupPermissionsContact (){
+        val permission = ContextCompat.checkSelfPermission(this,
+            Manifest.permission.READ_CONTACTS)
+        if (permission != PackageManager.PERMISSION_GRANTED){
+            Log.i(TAG, "Permission to record denied")
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), RECORD_REQUEST_CODE)
+        }
+
+    }
+
+
 
 }
