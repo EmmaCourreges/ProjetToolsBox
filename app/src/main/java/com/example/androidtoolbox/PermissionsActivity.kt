@@ -32,7 +32,9 @@ class PermissionsActivity : AppCompatActivity()  {
             intent.type="image/*"
             startActivityForResult(intent, REQUEST_CODE_GALLERY)
         }
-        contactRecycler.adapter = ContactAdapter(listOf("Juliette", "Melvin"))
+        getContacts()
+        //contactRecycler.adapter = ContactAdapter(listOf("Juliette", "Melvin"))
+        contactRecycler.adapter = ContactAdapter(contacts.sorted())
         //adapter permet de gerer l'affichage de chacune des cellules
         contactRecycler.layoutManager = LinearLayoutManager(this)
     }
@@ -78,6 +80,26 @@ class PermissionsActivity : AppCompatActivity()  {
             }
         }
     }
+    private fun getContacts() {
+        val resolver: ContentResolver = contentResolver;
+        val cursor = resolver.query(
+            ContactsContract.Contacts.CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
 
+        if (cursor!!.count > 0) {
+            while (cursor.moveToNext()) {
+                val name =
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                contacts.add("  Nom : $name")
+            }
+        } else {
+            Toast.makeText(applicationContext, "No contacts available!", Toast.LENGTH_SHORT).show()
+        }
+        cursor.close()
+    }
 
 }
