@@ -56,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
             saveCredentials(username,password)
             goToHome()
 
+
         }
     }
     private fun saveCredentials(id: String, pass:String) {

@@ -23,5 +23,20 @@
     <string name="prompt_failed_login">Mauvais identifiant ou mot de passe</string>
     <string name="formulaire">Formulaire</string>
     <string name="button">Button</string>
+    <string name="date">date</string>
+    <string name="nom">Nom</string>
+    <string name="name">name</string>
+    <string name="firstname">firstname</string>
+    <string name="acces_aux_informations_android" />
+    <string name="buton_camera" />
+    <string name="contact_Emma" />
+    <string name="Acces_aux_informations">Accès aux informations</string>
+    <string name="Contact_de_Emma">Contact de Emma COURREGES</string>
+    <string name="menu_contact">Contacts</string>
+    <string name="test_ok">Test OK</string>
+    <string name="todo">TODO</string>
+    <string name="titre">Accès aux Contacts</string>
+    <string name="cycle_de_vie_titre">"Cycle de vie "</string>
+    <string name="contactname">contactName</string>
 
 </resources>

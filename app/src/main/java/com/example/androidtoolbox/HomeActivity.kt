@@ -33,6 +33,12 @@ class HomeActivity : AppCompatActivity() {
         saveImg.setOnClickListener {
             goToSauvegarde()
         }
+        permImg.setOnClickListener {
+            goToPermissions()
+        }
+        cycleImg.setOnClickListener {
+            goToCycle()
+        }
     }
 
     /* private fun goToMain(){
@@ -47,6 +53,14 @@ class HomeActivity : AppCompatActivity() {
 
     private fun goToSauvegarde(){
         val intent = Intent(this, SauvegardeActivity::class.java)
+        startActivity(intent)
+    }
+    private fun goToPermissions(){
+        val intent = Intent(this, PermissionsActivity::class.java)
+        startActivity(intent)
+    }
+    private fun goToCycle(){
+        val intent = Intent(this, CycleActivity::class.java)
         startActivity(intent)
     }
 
