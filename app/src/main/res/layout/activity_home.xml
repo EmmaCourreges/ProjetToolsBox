@@ -40,9 +40,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="72dp"
         android:background="#DBF6EA"
+        android:contentDescription="@string/menu_webservices"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="?android:attr/actionModeWebSearchDrawable"
+        app:srcCompat="@android:drawable/stat_sys_upload"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
@@ -55,6 +56,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/bleImg"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="#E1F7EE"
+        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintVertical_bias="0.818"
+        app:srcCompat="@android:drawable/ic_menu_always_landscape_portrait"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView

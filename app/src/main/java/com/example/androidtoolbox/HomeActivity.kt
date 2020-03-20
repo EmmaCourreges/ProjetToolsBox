@@ -42,6 +42,9 @@ class HomeActivity : AppCompatActivity() {
         webImg.setOnClickListener {
             goToWeb()
         }
+        bleImg.setOnClickListener {
+            goToBle()
+        }
     }
 
     /* private fun goToMain(){
@@ -68,6 +71,10 @@ class HomeActivity : AppCompatActivity() {
     }
     private fun goToWeb(){
         val intent = Intent(this, WebServiceActivity::class.java)
+        startActivity(intent)
+    }
+    private fun goToBle(){
+        val intent = Intent(this, BleActivity::class.java)
         startActivity(intent)
     }
 
