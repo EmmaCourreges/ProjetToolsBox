@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_ble.*
 
 
@@ -57,6 +58,7 @@ class BleActivity: AppCompatActivity() {
       //  progressBar.visibility = View.VISIBLE
         //bleDivider.visibility = View.GONE
         handler = Handler()
+
         scanLeDevice(true)
     }
 
@@ -83,9 +85,12 @@ class BleActivity: AppCompatActivity() {
     private val leScanCallback = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult?) {
             super.onScanResult(callbackType, result)
-            if (result != null) {
-                Log.w("MainActivity", "${result.device}")
-            }
+          /*  if (result != null) {
+                Log.w("BleActivity", "${result.device}")
+            }*
+
+           */
+            Log.w("BleActivity", "${result?.device}")
             runOnUiThread {
                 //bleDivider.visibility = View.GONE
             }

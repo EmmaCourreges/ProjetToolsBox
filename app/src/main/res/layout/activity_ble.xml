@@ -40,4 +40,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bleTitle" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/BleRecycler"
+        android:layout_width="342dp"
+        android:layout_height="558dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bleTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

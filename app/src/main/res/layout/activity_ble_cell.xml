@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/Ble"
+        android:layout_width="377dp"
+        android:layout_height="171dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
+
+    <TextView
+        android:id="@+id/nameBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/Ble"
+        app:layout_constraintEnd_toEndOf="@+id/Ble"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="@+id/Ble"
+        app:layout_constraintTop_toTopOf="@+id/Ble"
+        app:layout_constraintVertical_bias="0.131" />
+
+    <TextView
+        android:id="@+id/addressBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/Ble"
+        app:layout_constraintEnd_toEndOf="@+id/Ble"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="@+id/Ble"
+        app:layout_constraintTop_toBottomOf="@+id/nameBT"
+        app:layout_constraintVertical_bias="0.469" />
+
+    <TextView
+        android:id="@+id/rssiBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/Ble"
+        app:layout_constraintEnd_toEndOf="@+id/Ble"
+        app:layout_constraintStart_toEndOf="@+id/addressBT"
+        app:layout_constraintTop_toTopOf="@+id/Ble" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

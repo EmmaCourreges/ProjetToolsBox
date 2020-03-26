@@ -4,19 +4,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/WebService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="391dp"
-        android:layout_marginBottom="696dp"
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/randomPicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:civ_border_color="#2196F3"
+        app:civ_border_width="5dp"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
 
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="238dp"
+        android:layout_height="26dp"
+        android:text="@string/Name"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/randomPicture"
+        app:layout_constraintTop_toTopOf="@+id/randomPicture"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/Address"
+        app:layout_constraintEnd_toEndOf="@+id/Name"
+        app:layout_constraintStart_toStartOf="@+id/Name"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
+
+    <TextView
+        android:id="@+id/Mail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Email"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/Address"
+        app:layout_constraintStart_toStartOf="@+id/Address"
+        app:layout_constraintTop_toBottomOf="@+id/Address"
+        tools:ignore="SmallSp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

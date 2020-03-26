@@ -38,5 +38,12 @@
     <string name="titre">Accès aux Contacts</string>
     <string name="cycle_de_vie_titre">"Cycle de vie "</string>
     <string name="contactname">contactName</string>
+    <string name="titleWebActivity">titleWebActivity</string>
+    <string name="retour">retour</string>
+    <string name="generate">generate</string>
+    <string name="Name">Name</string>
+    <string name="Address">Address</string>
+    <string name="Email">Email</string>
+    <string name="titreWeb">WebSERVICE</string>
 
 </resources>
