@@ -43,5 +43,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'com.thoughtbot:expandablerecyclerview:1.3'
+
 
 }

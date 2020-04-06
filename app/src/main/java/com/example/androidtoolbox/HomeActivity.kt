@@ -26,8 +26,9 @@ class HomeActivity : AppCompatActivity() {
             finish()
         }
 
-        //logoutButton.setOnClickListener{
-        //   goToMain()
+        logoutButton.setOnClickListener{
+           goToMain()
+        }
 
 
         saveImg.setOnClickListener {
@@ -47,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /* private fun goToMain(){
+     private fun goToMain(){
         val editor :SharedPreferences.Editor = sharedPreferences.edit()
 
         val intent = Intent(this, MainActivity::class.java)
@@ -55,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
         editor.clear()
         editor.apply()
 
-    }*/
+    }
 
     private fun goToSauvegarde(){
         val intent = Intent(this, SauvegardeActivity::class.java)
@@ -74,7 +75,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun goToBle(){
-        val intent = Intent(this, BleActivity::class.java)
+        val intent = Intent(this, BluetoothActivity::class.java)
         startActivity(intent)
     }
 

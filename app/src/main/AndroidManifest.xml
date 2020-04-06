@@ -10,6 +10,11 @@ package="com.example.androidtoolbox">
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
 <application
     android:allowBackup="true"
@@ -23,9 +28,13 @@ package="com.example.androidtoolbox">
     <activity android:name=".PermissionsActivity" />
     <activity android:name=".SauvegardeActivity" />
     <activity android:name=".ContactAdapter" />
+    <activity android:name=".BluetoothActivity"/>
+    <activity android:name=".BluetoothDetails"/>
     <activity android:name=".WebServiceActivity" />
-    <activity android:name=".BleActivity" />
+    <activity android:name=".BLEService" />
+
     <activity android:name=".LoginActivity">
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

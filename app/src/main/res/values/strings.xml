@@ -45,5 +45,30 @@
     <string name="Address">Address</string>
     <string name="Email">Email</string>
     <string name="titreWeb">WebSERVICE</string>
+    <string name="label_device_address">label_device_address</string>
+    <string name="label_device_name">label_device_name</string>
+    <string name="label_device_rssi">label_device_rssi</string>
+    <string name="label_device_serialnumber">label_device_serialnumber</string>
+    <string name="label_device_uuids">label_device_uuids</string>
+    <string name="label_major">label_major</string>
+    <string name="edit_major">edit_major</string>
+    <string name="label_minor">label_minor</string>
+    <string name="edit_minor">edit_minor</string>
+    <string name="activate">activate</string>
+    <string name="ecriture">Ecriture</string>
+    <string name="lecture">lecture</string>
+    <string name="notifier">notifier</string>
+    <string name="lancer_le_scan_ble">Scanner BLE</string>
+    <string name="bluetooth_button">BLE</string>
+    <string name="telephone_non_compatible_avec_le_ble">ERREUR : Non Compatible</string>
+    <string name="textview">NAME</string>
+    <string name="en_attente_de_connexion">Please wait</string>
+    <string name="red">test</string>
+    <string name="_00">rssi</string>
+    <string name="example">name</string>
+    <string name="_lecture">Lecture</string>
+    <string name="ecrire">Ecrire</string>
+    <string name="acc_s_g_n_rique">risque</string>
+    <string name="entrez_une_valeur">Entrer Valeur</string>
 
 </resources>

@@ -1,7 +1,7 @@
 package com.example.androidtoolbox
 
 import android.Manifest
-import android.Manifest.permission
+//import android.Manifest.permission
 import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
@@ -10,25 +10,25 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
+//import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
+//import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_permissions.*
-import java.security.AccessController.getContext
+//import java.security.AccessController.getContext
 
 
 class PermissionsActivity : AppCompatActivity()  {
 
-    val contacts = mutableListOf<String>()
+    private val contacts = mutableListOf<String>()
 
 
-    lateinit var currentPhotoPath: String
+  //  lateinit var currentPhotoPath: String
     private val TAG = "Permission"
 
     override fun onCreate(savedInstanceState: Bundle?) {
