@@ -1,8 +1,7 @@
-package com.example.androidtoolbox
-
 import android.app.AlertDialog
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattDescriptor
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
@@ -14,6 +13,9 @@ import android.view.animation.RotateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.androidtoolbox.BLEService
+import com.example.androidtoolbox.R
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder
@@ -34,6 +36,7 @@ class BluetoothDetailsAdapter(
     ) {
 
     val ble: BluetoothGatt? = gatt
+    var notifier = false
 
     class ServicesViewHolder(detailsView: View) : GroupViewHolder(detailsView) {
         val arrow: ImageView = detailsView.arrow
@@ -134,16 +137,19 @@ class BluetoothDetailsAdapter(
         holder.characteristicUUID.text = uuid.toString()
         holder.characteristicName.text = name
         holder.properties.text = "Proprietés : ${proprieties(characteristic.properties)}"
-        ble?.readCharacteristic(characteristic)
-        holder.valueBle.text = "Valeur : "
+
+
+        if (characteristic.uuid == UUID.fromString("466c9abc-f593-11e8-8eb2-f2801f1b9fd1") && notifier){
+            holder.valueBle.text =  "Valeur : ${byteArrayToHexString(characteristic.value)}"
+        } else if (characteristic.value != null) {
+            holder.valueBle.text =  "Valeur : ${String (characteristic.value)}"
+        } else {
+            holder.valueBle.text =  "Valeur : "
+        }
+
 
         holder.buttonRead.setOnClickListener {
             ble?.readCharacteristic(characteristic)
-            if(characteristic.value != null){
-                holder.valueBle.text =  "Valeur : ${String (characteristic.value)}"
-            } else {
-                holder.valueBle.text =  "Valeur : null"
-            }
         }
 
 
@@ -165,12 +171,23 @@ class BluetoothDetailsAdapter(
 
 
         holder.buttonNotify.setOnClickListener {
-            ble?.setCharacteristicNotification(characteristic, true)
-            ble?.readCharacteristic(characteristic)
-            if(characteristic.value != null){
-                holder.valueBle.text =  "Valeur : ${String (characteristic.value)}"
+            if (!notifier){
+                notifier = true
+                holder.buttonNotify.setBackgroundColor(0x40FF0000)
+                if (ble != null) {
+                    setCharacteristicNotificationInternal(ble, characteristic, true)
+                    if(characteristic.value != null){
+                        holder.valueBle.text =  "Valeur : ${byteArrayToHexString(characteristic.value)}"
+                    } else {
+                        holder.valueBle.text =  "Valeur : null"
+                    }
+                }
             } else {
-                holder.valueBle.text =  "Valeur : null"
+                notifier = false
+                holder.buttonNotify.setBackgroundColor(0x00FFFFFF)
+                if (ble != null) {
+                    setCharacteristicNotificationInternal(ble, characteristic, false)
+                }
             }
         }
     }
@@ -189,6 +206,34 @@ class BluetoothDetailsAdapter(
 
         holder.serviceUuid.text = title
         holder.nameService.text = uuidName
+    }
+
+    private fun byteArrayToHexString(array: ByteArray): String {
+        val result = StringBuilder(array.size * 2)
+        for ( byte in array ) {
+            val toAppend = String.format("%X", byte) // hexadecimal
+            result.append(toAppend).append("-")
+        }
+        result.setLength(result.length - 1) // remove last '-'
+        return result.toString()
+    }
+
+    private fun setCharacteristicNotificationInternal(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic, enabled: Boolean){
+        gatt.setCharacteristicNotification(characteristic, enabled)
+
+        if (characteristic.descriptors.size > 0) {
+
+            val descriptors = characteristic.descriptors
+            for (descriptor in descriptors) {
+
+                if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_NOTIFY != 0) {
+                    descriptor.value = if (enabled) BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE else BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE
+                } else if (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_INDICATE != 0) {
+                    descriptor.value = if (enabled) BluetoothGattDescriptor.ENABLE_INDICATION_VALUE else BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE
+                }
+                gatt.writeDescriptor(descriptor)
+            }
+        }
     }
 
     private fun proprieties(property: Int): StringBuilder {

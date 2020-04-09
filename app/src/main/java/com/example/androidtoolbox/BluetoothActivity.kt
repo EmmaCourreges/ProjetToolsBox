@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_bluetooth.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-
 class BluetoothActivity : AppCompatActivity() {
 
     private lateinit var handler: Handler
@@ -28,7 +27,7 @@ class BluetoothActivity : AppCompatActivity() {
     private lateinit var adapter: BluetoothActivityAdapter
     private val devices = ArrayList<ScanResult>()
 
-    var bluetoothGatt: BluetoothGatt? = null
+    //var bluetoothGatt: BluetoothGatt? = null
 
     private val bluetoothAdapter: BluetoothAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         val bluetoothManager = getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
@@ -50,12 +49,12 @@ class BluetoothActivity : AppCompatActivity() {
                     //init scan
                     if (textView12.text == "Lancer le scan BLE") {
                         searchButton.setImageResource(android.R.drawable.ic_media_pause)
-                        textView12.text = "Scan en cours ..."
+                        textView12.text = getString(R.string.scanning)
                         initBLEScan()
                         initScan()
                     } else if (textView12.text == "Scan en cours ...") {
                         searchButton.setImageResource(android.R.drawable.ic_media_play)
-                        textView12.text = "Lancer le scan BLE"
+                        textView12.text = getString(R.string.start_scan)
                         progressBar.visibility = View.INVISIBLE
                         dividerBle.visibility = View.VISIBLE
                     }
@@ -74,7 +73,6 @@ class BluetoothActivity : AppCompatActivity() {
         deviceListRV.adapter = BluetoothActivityAdapter(devices, ::onDeviceClicked)
         deviceListRV.layoutManager = LinearLayoutManager(this)
     }
-
 
     private fun initScan() {
         progressBar.visibility = View.VISIBLE
