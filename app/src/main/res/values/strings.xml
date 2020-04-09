@@ -72,5 +72,6 @@
     <string name="entrez_une_valeur">Entrer Valeur</string>
     <string name="scanning" />
     <string name="start_scan" />
+    <string name="dateOfBirth">dateOfBirth</string>
 
 </resources>
