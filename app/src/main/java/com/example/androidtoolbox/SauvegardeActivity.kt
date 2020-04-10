@@ -1,3 +1,5 @@
+@file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.example.androidtoolbox
 
 
@@ -12,6 +14,7 @@ import java.io.File
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.*
 
 
 class  SauvegardeActivity : AppCompatActivity() {
@@ -37,11 +40,11 @@ class  SauvegardeActivity : AppCompatActivity() {
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { datePicker: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, monthOfYear)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                cal.set(YEAR, year)
+                cal.set(MONTH, monthOfYear)
+                cal.set(DAY_OF_MONTH, dayOfMonth)
 
-                val sdf = SimpleDateFormat( "dd/MM:yyyy", Locale.FRANCE)
+                val sdf = SimpleDateFormat( "dd/MM/yyyy", Locale.FRANCE)
                 dateOfBirth.text = sdf.format(cal.time)
 
             }
@@ -56,9 +59,9 @@ class  SauvegardeActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         return DatePickerDialog(
             this@SauvegardeActivity, dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
+            cal.get(YEAR),
+            cal.get(MONTH),
+            cal.get(DAY_OF_MONTH)
             ).show()
     }
 
@@ -72,7 +75,7 @@ class  SauvegardeActivity : AppCompatActivity() {
 
         AlertDialog.Builder( this@SauvegardeActivity)
             .setTitle("Lecture du fichier")
-            .setMessage("Nom : $lastName\n Prenom : $firstName \n Date: $date Age: $age \n")
+            .setMessage("Nom : $lastName\n Prenom : $firstName \n Naissance: $date Age: $age \n")
             .create()
             .show()
 
@@ -84,38 +87,40 @@ class  SauvegardeActivity : AppCompatActivity() {
         jsonObject.put(KEY_LAST_NAME, lastName)
         jsonObject.put(KEY_FIRST_NAME, firstName)
         jsonObject.put(KEY_DATE, date)
-        val age = calculAge(dateOfBirth.text.toString())
+        val age = calculdeAge(dateOfBirth.text.toString())
         jsonObject.put(KEY_AGE, age)
         val data = jsonObject.toString()
         File(cacheDir.absolutePath, "user_data.json").writeText(data)
     }
 
 
-
-    private fun calculAge(date: String): Int {
+    private fun calculdeAge(date: String): Int {
 
         var age = 0
 
         try {
-            val dates = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).parse(date)
-            val today = Calendar.getInstance();
-            val birth = Calendar.getInstance();
+            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
+            val dates = simpleDateFormat.parse(date)
+
+
+            val today = getInstance();
+            val birth = getInstance();
 
             birth.time = dates
 
-            val thisYear = today.get(Calendar.YEAR)
-            val yearBirth = birth.get(Calendar.YEAR)
+            val thisYear = today.get(YEAR)
+            val yearBirth = birth.get(YEAR)
 
             age = thisYear - yearBirth
 
-            val thisMonth = today.get(Calendar.MONTH)
-            val birthMonth = birth.get(Calendar.MONTH)
+            val thisMonth = today.get(MONTH)
+            val birthMonth = birth.get(MONTH)
 
             if(birthMonth > thisMonth){
                 age--
             }else if (birthMonth == thisMonth){
-                val thisDay = today.get(Calendar.DAY_OF_MONTH)
-                val birthDay = birth.get(Calendar.DAY_OF_MONTH)
+                val thisDay = today.get(DAY_OF_MONTH)
+                val birthDay = birth.get(DAY_OF_MONTH)
 
                 if(birthDay > thisDay){
                     age--
@@ -127,10 +132,6 @@ class  SauvegardeActivity : AppCompatActivity() {
         return age
     }
 
-
-
-
-
     companion object {
         private const val KEY_LAST_NAME = "KEY_LAST_NAME"
         private const val KEY_FIRST_NAME = "KEY_FIRST_NAME"
@@ -141,3 +142,10 @@ class  SauvegardeActivity : AppCompatActivity() {
 
 
 }
+
+
+
+
+
+
+

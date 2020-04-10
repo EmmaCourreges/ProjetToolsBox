@@ -25,9 +25,11 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="76dp"
         android:background="#86D1A8A5"
-        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@+id/saveImg"
+        app:layout_constraintEnd_toStartOf="@+id/saveImg"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
         app:srcCompat="@android:drawable/ic_menu_rotate"
@@ -53,8 +55,12 @@
         android:layout_marginStart="72dp"
         android:layout_marginTop="32dp"
         android:background="#CBC59695"
+        app:layout_constraintBottom_toTopOf="@+id/bleImg"
+        app:layout_constraintEnd_toStartOf="@+id/webImg"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         tools:ignore="VectorDrawableCompat" />
 
@@ -70,7 +76,8 @@
         app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
         app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@android:drawable/ic_menu_always_landscape_portrait"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/saveImg"
@@ -92,6 +99,7 @@
         android:fontFamily="casual"
         android:text="@string/menu_cycle"
         app:layout_constraintEnd_toEndOf="@+id/cycleImg"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="@+id/cycleImg"
         app:layout_constraintTop_toBottomOf="@+id/cycleImg" />
 
